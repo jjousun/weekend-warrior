@@ -1,27 +1,46 @@
 class Alouette
-  attr_reader :nouns, :refrain, :lyrics, :verse_lines
+  attr_reader :nouns, :refrain, :lyrics
 
   def initialize
     @nouns = ["Et le dos!", "Et la queue!", "Et les pattes!", "Et les ailes!", "Et le cou!", "Et les yeux!", "Et le bec!", "Et la tête!"]
     @refrain  = "Alouette, gentille alouette,\nAlouette, je te plumerai."
     @lyrics = nil
-    @verse_lines = ["Je te plumerai", ".", "Alouette!", "A-a-a-ah"]
   end
 
-  def lines_for_verse(num)
+  def self.lines_for_verse(num)
+    @nouns = ["Et le dos!", "Et la queue!", "Et les pattes!", "Et les ailes!", "Et le cou!", "Et les yeux!", "Et le bec!", "Et la tête!"]
     @lyrics = @nouns[(-1-num)..-1]
   end
 
-  def verse(num)
+  def self.verse(num)
     # @lines_for_verse(2) => @lyrics = ["Et les yeux!", "Et le bec!", "Et la tete!"]
-    # verse(2) =>
+    # verse(2) => "Je te plumerai les yeux.
+                # Je te plumerai les yeux.
+                # Et les yeux!
+                # Et les yeux!
+                # Et le bec!
+                # Et le bec!
+                # Et la tête!
+                # Et la tête!
+                # Alouette!
+                # Alouette!
+                # A-a-a-ah"
     lines_for_verse(num)
-    
-    return "Je te plumerai + #{@lyrics[0]}.chomp('Et ').chomp('!') + .\n" * 2 + "#{@lyrics[0]}\n" + "Alouette!\n" * 2 + "A-a-a-ah"
+
+    key_phrase = @lyrics[0].split(' ')[1..-1].join(' ').chomp('!')
+
+    @lyrics.each { |phrase| puts "#{phrase}\n" * 2 }
+
+    verse = "Je te plumerai #{key_phrase}.\n" * 2 + "Alouette!\n" * 2 + "A-a-a-ah\n"
+
+    return verse
 
   end
 
-  def sing
+  def self.sing
 
   end
+
 end
+
+bird = Alouette.verse(2)
