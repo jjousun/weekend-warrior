@@ -9,7 +9,7 @@ describe Alouette do
 
   describe "lines_for_verse" do
     it "returns an array of strings" do
-      lines = Alouette.new.lines_for_verse(3)
+      lines = Alouette.lines_for_verse(3)
 
       lines.must_be_kind_of Array
 
@@ -19,7 +19,7 @@ describe Alouette do
     end
 
     it "generates the correct line for the first verse" do
-      Alouette.new.lines_for_verse(0).must_equal ['Et la tête!']
+      Alouette.lines_for_verse(0).must_equal ['Et la tête!']
     end
 
     it "generates the correct lines for the third verse" do
@@ -28,17 +28,16 @@ describe Alouette do
         "Et le bec!",
         "Et la tête!"
       ]
-      Alouette.new.lines_for_verse(2).must_equal expected_lines
+      Alouette.lines_for_verse(2).must_equal expected_lines
     end
   end
 
   describe "verse" do
     it "returns a string" do
-      Alouette.new.verse(3).must_be_kind_of String
+      Alouette.verse(3).must_be_kind_of String
     end
 
     it "first two lines begin with 'Je te plumerai'" do
-      skip
       lines = Alouette.verse(3).split("\n")
 
       # If there aren't at least 2 lines, don't continue
@@ -50,7 +49,6 @@ describe Alouette do
     end
 
     it "last three lines are 'Alouette! Alouette! A-a-a-ah'" do
-      skip
       lines = Alouette.verse(3).split("\n")
 
       # If there aren't at least 3 lines, don't continue
@@ -62,7 +60,6 @@ describe Alouette do
     end
 
     it "middle lines begin with 'Et ' and end with '!'" do
-      skip
       lines = Alouette.verse(3).split("\n")
 
       # If there aren't at least 6 lines, don't continue
