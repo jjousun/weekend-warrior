@@ -75,7 +75,6 @@ describe Alouette do
     end
 
     it "generates the third verse" do
-      skip
       expected_verse = <<-__END_VERSE__
       Je te plumerai les yeux.
 Je te plumerai les yeux.
@@ -101,12 +100,10 @@ A-a-a-ah
     end
 
     it "returns a string" do
-      skip
       Alouette.sing.must_be_kind_of String
     end
 
     it "begins and ends with the refrain" do
-      skip
       song = Alouette.sing
       refrain = "Alouette, gentille alouette,\nAlouette, je te plumerai."
       song.start_with?(refrain + "\n\n").must_equal true, "Song didn't begin with the refrain"
@@ -114,7 +111,6 @@ A-a-a-ah
     end
 
     it "generates the full lyrics" do
-      skip
       Alouette.sing.must_equal expected_lyrics
     end
   end
